@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+}
+
+audio {
+  display: none;
+}
+
+.key {
+  width: 4.3vw;
+  height: 25vw;
+  border: 0.2vw rgb(0, 0, 0) solid;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  padding-bottom: 0.2vw;
+  cursor: pointer;
+}
+
+.keyboard-key {
+  color: grey;
+  font-weight: 700;
+  font-size: 1.6vw;
+  margin-bottom: 0.3vw;
+}
+
+.note {
+  font-size: 2.1vw;
+  font-weight: 500;
+  /* color: grey; */
+}
+
+.white-keys .note {
+  color: rgb(97, 97, 97);
+}
+
+.black-keys .note {
+  color: rgb(170, 170, 170);
+}
+
+.white-keys .key {
+  background-color: white;
+}
+
+.black-keys .key {
+  background-color: black;
+  height: 15vw;
+  width: 4vw;
+}
+
+.key.pressed {
+  background-color: rgb(0, 255, 0);
+}
+
+.white-keys,
+.black-keys {
+  display: flex;
+  flex-direction: row;
+}
+
+.black-keys {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.key-group {
+  position: relative;
+}
+
+.keys {
+  display: flex;
+  flex-direction: row;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
