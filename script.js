@@ -32,10 +32,10 @@ const KEYMAP = {
   m: "G3",
   ",": "A3",
   ".": "B3",
+  "/": "C4",
   j: "Fs3",
   k: "Gs3",
   l: "As3",
-  "/": "C4",
 };
 
 const AUDIOS = new Map();
