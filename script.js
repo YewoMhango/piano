@@ -1,84 +1,86 @@
 const KEYMAP = {
-  z: "C1",
-  x: "D1",
-  c: "E1",
-  v: "F1",
-  b: "G1",
-  s: "Cs1",
-  d: "Ds1",
-  g: "Fs1",
-  q: "A1",
-  w: "B1",
-  1: "Gs1",
-  2: "As1",
-  e: "C2",
-  r: "D2",
-  t: "E2",
-  4: "Cs2",
-  5: "Ds2",
-  y: "F2",
-  u: "G2",
-  i: "A2",
-  o: "B2",
-  7: "Fs2",
-  8: "Gs2",
-  9: "As2",
-  p: "C3",
-  "[": "D3",
-  "]": "E3",
-  "-": "Cs3",
-  "=": "Ds3",
-  n: "F3",
-  m: "G3",
-  ",": "A3",
-  ".": "B3",
-  "/": "C4",
-  j: "Fs3",
-  k: "Gs3",
-  l: "As3",
+    a: "D-2",
+    z: "E2",
+    x: "F2",
+    c: "G2",
+    v: "A2",
+    d: "F-2",
+    f: "G-2",
+    g: "A-2",
+    b: "B2",
+    n: "C3",
+    m: "D3",
+    ",": "E3",
+    ".": "F3",
+    "/": "G3",
+    j: "C-3",
+    k: "D-3",
+    ";": "F-3",
+    q: "A3",
+    w: "B3",
+    1: "G-3",
+    2: "A-3",
+    e: "C4",
+    r: "D4",
+    t: "E4",
+    4: "C-4",
+    5: "D-4",
+    y: "F4",
+    u: "G4",
+    i: "A4",
+    o: "B4",
+    7: "F-4",
+    8: "G-4",
+    9: "A-4",
+    p: "C5",
+    "[": "D5",
+    "]": "E5",
+    "-": "C-5",
+    "=": "D-5",
+    "\\": "F5",
 };
 
 const AUDIOS = new Map();
 
 document.querySelectorAll(".key").forEach((keyElement) => {
-  keyElement.onmousedown = keyElement.ontouchstart = (ev) => {
-    notePlayed(keyElement.id);
-    console.log(keyElement.id);
-  };
+    keyElement.onmousedown = keyElement.ontouchstart = (ev) => {
+        notePlayed(keyElement.id);
+        console.log(keyElement.id);
+    };
 
-  keyElement.onmouseup = keyElement.ontouchend = (ev) => {
-    noteStopped(keyElement.id);
-    console.log(keyElement.id);
-  };
+    keyElement.onmouseup = keyElement.ontouchend = (ev) => {
+        noteStopped(keyElement.id);
+        console.log(keyElement.id);
+    };
 
-  AUDIOS.set(keyElement.id, keyElement.querySelector("audio"));
+    AUDIOS.set(keyElement.id, keyElement.querySelector("audio"));
 });
 
 document.addEventListener("keydown", (ev) => {
-  if (Object.keys(KEYMAP).includes(ev.key.toLowerCase())) {
-    notePlayed(KEYMAP[ev.key.toLowerCase()]);
-  }
+    if (Object.keys(KEYMAP).includes(ev.key.toLowerCase())) {
+        notePlayed(KEYMAP[ev.key.toLowerCase()]);
+    }
 });
 
 document.addEventListener("keyup", (ev) => {
-  if (Object.keys(KEYMAP).includes(ev.key.toLowerCase())) {
-    noteStopped(KEYMAP[ev.key.toLowerCase()]);
-  }
+    if (Object.keys(KEYMAP).includes(ev.key.toLowerCase())) {
+        noteStopped(KEYMAP[ev.key.toLowerCase()]);
+    }
 });
 
 function notePlayed(id) {
-  if (!document.getElementById(id).classList.contains("pressed")) {
-    document.getElementById(id).classList.add("pressed");
+    if (!document.getElementById(id).classList.contains("pressed")) {
+        document.getElementById(id).classList.add("pressed");
 
-    AUDIOS.get(id).play();
-  }
+        AUDIOS.get(id).play();
+    }
 }
 
 function noteStopped(id) {
-  document.getElementById(id).classList.remove("pressed");
+    document.getElementById(id).classList.remove("pressed");
 
-  let audio = AUDIOS.get(id);
+    let audio = AUDIOS.get(id);
 
-  audio.pause();
-  audio.currentTime = 0;
+    audio.pause();
+    audio.currentTime = 0;
 }
