@@ -57,6 +57,8 @@ document.querySelectorAll(".key").forEach((keyElement) => {
 });
 
 document.addEventListener("keydown", (ev) => {
+    ev.preventDefault();
+
     if (Object.keys(KEYMAP).includes(ev.key.toLowerCase())) {
         notePlayed(KEYMAP[ev.key.toLowerCase()]);
     }
